@@ -1,0 +1,15 @@
+CREATE DATABASE perntodo;
+
+CREATE TABLE todo(
+    todo_id SERIAL PRIMARY KEY,
+    description VARCHAR(255)
+);
+
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE todo ADD COLUMN user_id INTEGER REFERENCES users(user_id);
